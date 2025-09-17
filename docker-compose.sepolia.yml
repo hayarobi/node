@@ -5,7 +5,7 @@ services:
     ports:
       - "3100:3100"
     env_file:
-      - .env.eigenda.mainnet
+      - .env.eigenda.sepolia
     command: [
       "--addr", "0.0.0.0",
       "--port", "3100",
@@ -14,10 +14,10 @@ services:
 
   nitro-node:
     image: ghcr.io/layr-labs/nitro/nitro-node:v3.5.7
-    container_name: hpp-node-mainnet
+    container_name: hpp-node-sepolia
     volumes:
-      - ./hpp-mainnet-node-config.json:/config/nodeConfig.json
-      - ./hpp-mainnet/data:/home/user/.arbitrum
+      - ./hpp-sepolia-node-config.json:/config/nodeConfig.json
+      - ./hpp-sepolia/data:/home/user/.arbitrum
     ports:
       - "8547:8547"
       - "8548:8548"
