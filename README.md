@@ -91,10 +91,10 @@ You should have an access point to Ethereum L1 full node RPC
     You can use helper script `manage.sh` to start/stop the node:
 
    ```bash
-   ./manage.sh run           # Starts the container for the "mainnet" (default)
+   ./manage.sh run           # Starts the container for the mainnet (default)
    ./manage.sh run sepolia   # Starts the container for the "sepolia" testnet
-   ./manage.sh stop mainent  # Stops the container for the "mainent" 
-   ./manage.sh clear         # Clears the containers for the "mainent" (default)
+   ./manage.sh stop mainnet  # Stops the container for the mainnet 
+   ./manage.sh clear         # Clears the containers for the "mainnet" (default)
    ```
 
 ## Requirements

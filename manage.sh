@@ -4,7 +4,7 @@
 if [ $# -lt 1 ] || [ $# -gt 2 ]; then
   echo "usage: manage.sh <operation> [network]"
   echo "  operation: run | stop | clear"
-  echo "  network: mainent (default) | sepolia"
+  echo "  network: mainnet (default) | sepolia"
   exit 100
 fi
 
@@ -21,9 +21,9 @@ case "$OPERATION" in
     ;;
 esac
 
-# The second argument specifies the network, defaulting to "mainent" if not provided
-NETWORK="${2:-mainent}" # If the second parameter is empty, use "mainent" as the default
-if [ "$NETWORK" = "mainent" ]; then
+# The second argument specifies the network, defaulting to "mainnet" if not provided
+NETWORK="${2:-mainnet}" # If the second parameter is empty, use "mainnet" as the default
+if [ "$NETWORK" = "mainnet" ]; then
   CONFIG_FILE="docker-compose.yml"
 elif [ "$NETWORK" = "sepolia" ]; then
   CONFIG_FILE="docker-compose.sepolia.yml"
