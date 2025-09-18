@@ -1,4 +1,4 @@
-![HPP](https://github.com/hpp-io/node/raw/main/assets/HPP_primary_black.svg)
+![HPP](./assets/HPP_primary_black.svg)
 
 # Overview
 
@@ -19,7 +19,7 @@ The following is the minimum hardware configuration required to set up a Nitro f
 
 Please note that:
 
-* These minimum requirements for RAM and CPU are recommended for nodes that process a small amount of RPC requests. For
+* These minimum requirements for RAM and CPU are recommended for nodes that process a small number of RPC requests. For
   nodes that require processing multiple simultaneous requests, both RAM and number of CPU cores will need to be scaled
   with the amount of traffic being served.
 * Single core performance is important. If the node is falling behind and a single core is 100% busy, it is recommended
@@ -51,8 +51,8 @@ Please note that:
 
 2. Modify the configuration of Arbitrum Nitro
 
-   구동하려는 체인에 맞게 `hpp-mainnet-node-config.json` 나 `hpp-sepolia-node-config.json` 파일에서 일부 필수 항목을 수정합니다. 자세한 것은 아래쪽 [Configuration] 항목을
-   참고하세요.
+   Update the required fields in the `hpp-mainnet-node-config.json` or `hpp-sepolia-node-config.json` file to align 
+with the target chain. For additional details, refer to the [Configuration] section below.
 
      ```json
        {
@@ -127,10 +127,12 @@ Please note that:
 
 #### RPC endpoint
 
-예시파일에 사용된 무료 RPC 엔드포인트인 https://ethereum-rpc.publicnode.com 는 사용량 제약으로 인해 노드에서 사용하기에는 부족합니다. 사용자가 직접 제약이 없는 RPC엔드포인트
-서비스를 구독하고, 해당 서비스가 제공하는 RPC 엔드포인트로 바꾸어야 합니다. 
+The RPC endpoint provided in the example configuration, `https://ethereum-rpc.publicnode.com`, is a free service 
+that is not enough for use in the node due to the usage limits. It is recommended to use an unlimited RPC endpoint 
+service. Users must subscribe to such a service and replace the example configuration with the RPC endpoint provided 
+by the service.
 
-예를 들어 Alchemy RPC를 사용한다면 RPC 엔드포인트는 아래와 같은 형태로 설정합니다.
+For instance, when using Alchemy RPC, the RPC endpoint should be defined in the configuration as follows:
 
 ```properties
 EIGENDA_PROXY_EIGENDA_ETH_RPC=https://eth-mainnet.g.alchemy.com/v2/3AbCdEfGh78JkL_zPxDdf
