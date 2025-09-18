@@ -5,10 +5,10 @@
   },
   "parent-chain": {
     "connection": {
-      "url": "<YOUR_OWN_RPC_ENDPOINT>"
+      "url": "<L1_RPC_ENDPOINT>"
     },
     "blob-client": {
-      "beacon-url": "https://ethereum-beacon-api.publicnode.com"
+      "beacon-url": "<L1_BEACON_API_ENDPOINT>"
     }
   },
   "node": {
@@ -22,7 +22,7 @@
     },
     "eigen-da": {
       "enable": true,
-      "rpc": "http://localhost:3100"
+      "rpc": "<EIGENDA_ENDPOINT>"
     },
     "data-availability": {
       "enable": true,

@@ -1,23 +1,46 @@
-![HPP](logo.webp)
+![HPP](https://github.com/hpp-io/node/raw/main/assets/HPP_primary_black.svg)
 
 # Overview
 
-TODO: need to fill overview 
+TODO: need to fill overview
 
+## Requirements
 
-## Quick Start
+### Minimum hardware configuration
+
+The following is the minimum hardware configuration required to set up a Nitro full node (not archival):
+
+| Resource     | Recommended                                   |
+|--------------|-----------------------------------------------|
+| RAM          | 16 GB                                         |
+| CPU          | 4 core CPU (for AWS, a t3 xLarge instance)    |
+| Storage Type | NVMe SSD drives are recommended               |
+| Storage size | Depends on the chain and its traffic overtime |
+
+Please note that:
+
+* These minimum requirements for RAM and CPU are recommended for nodes that process a small amount of RPC requests. For
+  nodes that require processing multiple simultaneous requests, both RAM and number of CPU cores will need to be scaled
+  with the amount of traffic being served.
+* Single core performance is important. If the node is falling behind and a single core is 100% busy, it is recommended
+  to update to a faster processor
+* The minimum storage requirements will change over time as the chain grows. Using more than the minimum requirements to
+  run a robust full node is recommended.
 
 ### Prerequisites
 
-You should have an access point to Ethereum L1 full node RPC
+1. Download and install [Docker](https://www.docker.com/), ensure it is running.
+2. Unlimited rate limit Ethereum RPC endpoint and beacon chain RPC endpoint
+
+## Quick Start
 
 ### Running the Node
 
 1. Configure your L1 endpoints in the appropriate `.env` file:
 
-    If you are running the node on mainnet or testnet, refer to `.env.eigenda.mainnet` or `.env.eigenda.sepolia`
+   If you are running the node on mainnet or testnet, refer to `.env.eigenda.mainnet` or `.env.eigenda.sepolia`
 
-   ```yaml
+   ```properties
    # EigenDA Proxy - .env.eigenda.mainnet
     EIGENDA_PROXY_EIGENDA_DISPERSER_RPC=disperser.eigenda.xyz:443
     EIGENDA_PROXY_EIGENDA_STATUS_QUERY_INTERVAL=5s
@@ -27,8 +50,9 @@ You should have an access point to Ethereum L1 full node RPC
    ```
 
 2. Modify the configuration of Arbitrum Nitro
-    
-    Refer to `hpp-mainnet-node-config.json` or `hpp-sepolia-node-config.json`.
+
+   구동하려는 체인에 맞게 `hpp-mainnet-node-config.json` 나 `hpp-sepolia-node-config.json` 파일에서 일부 필수 항목을 수정합니다. 자세한 것은 아래쪽 [Configuration] 항목을
+   참고하세요.
 
      ```json
        {
@@ -88,7 +112,7 @@ You should have an access point to Ethereum L1 full node RPC
 
    ```
 
-    You can use helper script `manage.sh` to start/stop the node:
+   You can use helper script `manage.sh` to start/stop the node:
 
    ```bash
    ./manage.sh run           # Starts the container for the mainnet (default)
@@ -97,22 +121,27 @@ You should have an access point to Ethereum L1 full node RPC
    ./manage.sh clear         # Clears the containers for the "mainnet" (default)
    ```
 
-## Requirements
-
-The following are the hardware specifications we use in production:
-
 ## Configuration
 
 ### Required Settings
 
-- L1 Configuration:
+#### RPC endpoint
+
+예시파일에 사용된 무료 RPC 엔드포인트인 https://ethereum-rpc.publicnode.com 는 사용량 제약으로 인해 노드에서 사용하기에는 부족합니다. 사용자가 직접 제약이 없는 RPC엔드포인트
+서비스를 구독하고, 해당 서비스가 제공하는 RPC 엔드포인트로 바꾸어야 합니다. 
+
+예를 들어 Alchemy RPC를 사용한다면 RPC 엔드포인트는 아래와 같은 형태로 설정합니다.
+
+```properties
+EIGENDA_PROXY_EIGENDA_ETH_RPC=https://eth-mainnet.g.alchemy.com/v2/3AbCdEfGh78JkL_zPxDdf
+```
 
 ## Supported Networks
 
 | Network | Status |
-| ------- | ------ |
-| Mainnet | ✅     |
-| Testnet | ✅     |
+|---------|--------|
+| Mainnet | ✅      |
+| Testnet | ✅      |
 
 ## Troubleshooting
 
@@ -120,6 +149,7 @@ TODO: need to fill troubleshooting
 
 ## Disclaimer
 
-THE NODE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. We make no guarantees about asset protection or security. Usage is subject to applicable laws and regulations.
+THE NODE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. We make no guarantees about asset protection or
+security. Usage is subject to applicable laws and regulations.
 
 For more information, visit [docs.base.org](https://docs.hpp.io/).
